@@ -10,7 +10,7 @@ public class GradeCalculator {
     private double this_grad_cred;
     private double add_this_grad_cred = 0;
     private double avg_this_grad_cred;
-    private double all_credit = 0;
+    private double avg_all_grad_cred;
 
 
     public GradeCalculator(String name, double pre_grade, int pre_credit){
@@ -52,15 +52,18 @@ public class GradeCalculator {
 //        System.out.print(course.sort_grade + "  ");
 //        System.out.print(initial_grade + " ");
 //        System.out.println(this_grad_cred);
-
+        // 입력한 한 과목씩 전부 더함
         add_this_grad_cred = this_grad_cred + add_this_grad_cred;
     }
     public void print(){
         //이번 학기 평균 성적 내기
         avg_this_grad_cred = add_this_grad_cred / this_credit;
+        avg_all_grad_cred = ((add_this_grad_cred + (initial_credit * initial_grade)) / (int) (this_credit + pre_credit) );
 
         System.out.println("직전 학기 성적: " + initial_grade + "(총 " + initial_credit + "학점)");
-        System.out.println("이번 학기 성적: " + Math.round(avg_this_grad_cred*10000000000.0)/10000000000.0 + "(총 " + this_credit + "학점)");
-        System.out.println("전체 예상 학점: " + );
+        System.out.println("이번 학기 성적: " + Math.round(avg_this_grad_cred*10000000000.0)/10000000000.0
+                + "(총 " + (int) this_credit + "학점)");
+        System.out.println("전체 예상 학점: " + Math.round(avg_all_grad_cred*10000000000.0)/10000000000.0
+                + "(총 " + (int) (this_credit + pre_credit) + "학점)");
     }
 }
